@@ -1,4 +1,4 @@
-# E-commerce Project Readme
+# E-commerce Project
 
 This is an e-commerce project that includes both the frontend and backend code for the website. The frontend code is located in the frontend folder, which is located in the root directory. The backend code is located in the root directory.
 
