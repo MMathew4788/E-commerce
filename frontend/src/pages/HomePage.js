@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../components/Layouts/Layout";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Checkbox, Radio } from "antd";
 import Prices from "../components/Prices.js";
+import { useCart } from "../components/Context/Cart";
+import { set } from "mongoose";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+  const [cart, setCart] = useCart();
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [checked, setChecked] = useState([]);
@@ -124,10 +129,22 @@ const HomePage = () => {
                       )}
                     </p>
                     <p className="text-gray-800 font-bold">£ {image.price}</p>
-                    <button className="text-gray-800 border border-cyan-300 p-2 mb-2 text-center">
+                    <button
+                      className="text-gray-800 border border-cyan-300 p-2 mb-2 text-center"
+                      onClick={() => navigate(`/product/${image.slug}`)}
+                    >
                       More Details
                     </button>
-                    <button className="bg-gray-800 text-cyan-300 p-2 text-center p-2">
+                    <button
+                      className="bg-gray-800 text-cyan-300 text-center p-2"
+                      onClick={() => {
+                        setCart([...cart, image]);
+                        localStorage.setItem(
+                          "cart",
+                          JSON.stringify([...cart, image])
+                        );
+                      }}
+                    >
                       Add to Cart
                     </button>
                   </div>

@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../Context/Auth";
+import { useCart } from "../Context/Cart";
+import { Badge } from "antd";
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
+  const [cart] = useCart();
   const handleSignOut = () => {
     setAuth({
       ...auth,
@@ -46,16 +49,6 @@ const Header = () => {
                 About
               </NavLink>
               <NavLink
-                to="/product"
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-cyan-300 text-sm font-semibold mr-10"
-                    : "text-gray-200 text-sm mr-10 hover:text-cyan-300"
-                }
-              >
-                Products
-              </NavLink>
-              <NavLink
                 to="/contact"
                 className={({ isActive }) =>
                   isActive
@@ -67,16 +60,18 @@ const Header = () => {
               </NavLink>
             </div>
             <div className="flex flex-col lg:flex-row sm:items-center">
-              <NavLink
-                to="/cart"
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-cyan-300 text-sm font-semibold mr-10"
-                    : "text-gray-200 text-sm mr-10 hover:text-cyan-300"
-                }
-              >
-                Cart (0)
-              </NavLink>
+              <Badge count={cart?.length} showZero offset={[-30, 0]}>
+                <NavLink
+                  to="/cart"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-cyan-300 text-sm font-semibold mr-10"
+                      : "text-gray-200 text-sm mr-10 hover:text-cyan-300"
+                  }
+                >
+                  Cart
+                </NavLink>
+              </Badge>
               {!auth.user ? (
                 <>
                   <NavLink
