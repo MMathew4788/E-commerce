@@ -47,6 +47,16 @@ const AdminMenu = () => {
           Update Products
         </NavLink>
         <NavLink
+          to="/dashboard/admin/orders"
+          className={({ isActive }) => {
+            return isActive
+              ? "px-6 py-4 text-cyan-300 bg-gray-800 border text-sm flex items-center justify-center font-semibold"
+              : "px-6 py-4 text-gray-800  text-sm flex items-center justify-center font-semibold ";
+          }}
+        >
+          User Order
+        </NavLink>
+        <NavLink
           to="/dashboard/admin/users"
           className={({ isActive }) => {
             return isActive

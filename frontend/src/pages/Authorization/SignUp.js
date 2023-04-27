@@ -8,7 +8,7 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
-  const [address, setAddresss] = useState("");
+  const [address, setAddress] = useState("");
   const [answer, setAnswer] = useState("");
 
   const navigate = useNavigate();
@@ -91,7 +91,7 @@ const SignUp = () => {
             <input
               type="text"
               value={address}
-              onChange={(e) => setAddresss(e.target.value)}
+              onChange={(e) => setAddress(e.target.value)}
               className="border border-cyan-300 p-2"
               placeholder="Please enter your address"
               id="address"

@@ -14,7 +14,7 @@ const UserMenu = () => {
               : "px-6 py-4 text-gray-800  text-sm flex items-center justify-center font-semibold ";
           }}
         >
-          Profile
+          Update Profile
         </NavLink>
         <NavLink
           to="/dashboard/user/orders"
