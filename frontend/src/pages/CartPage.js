@@ -78,7 +78,7 @@ const CartPage = () => {
 
   return (
     <Layout>
-      <h1 className="flex flex-col items-center justify-center space-y-6 my-20">
+      <h1 className="flex flex-col items-center justify-center space-y-6 my-28">
         <div className="text-xl">{`Welcome ${
           auth?.token && auth?.user?.name
         }`}</div>

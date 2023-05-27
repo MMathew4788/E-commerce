@@ -37,7 +37,7 @@ const SignIn = () => {
 
   return (
     <Layout>
-      <div className="flex flex-col items-center justify-center space-y-6 mt-20">
+      <div className="flex flex-col items-center justify-center space-y-6 mt-28">
         <div className="text-3xl font-bold">Sign In</div>
         <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
           <div className="flex flex-col space-y-2">

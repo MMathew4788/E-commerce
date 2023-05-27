@@ -59,7 +59,8 @@ const Header = () => {
                 Contact
               </NavLink>
             </div>
-            <div className="flex flex-col lg:flex-row sm:items-center">
+
+            <div className="flex flex-row sm:items-center">
               <Badge count={cart?.length} showZero offset={[-30, 0]}>
                 <NavLink
                   to="/cart"

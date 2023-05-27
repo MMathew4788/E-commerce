@@ -32,7 +32,7 @@ const SignUp = () => {
 
   return (
     <Layout>
-      <div className="flex flex-col items-center justify-center space-y-6 mt-20 mb-20">
+      <div className="flex flex-col items-center justify-center space-y-6 mt-28 mb-20">
         <div className="text-3xl font-bold">Sign Up</div>
         <form
           onSubmit={handleSubmit}
@@ -107,7 +107,7 @@ const SignUp = () => {
               onChange={(e) => setAnswer(e.target.value)}
               className="border border-cyan-300 p-2"
               placeholder="What is your favorite sports"
-              id="address"
+              id="answer"
               required
             />
           </div>
