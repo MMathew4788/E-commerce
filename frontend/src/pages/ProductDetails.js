@@ -40,18 +40,18 @@ const ProductDetails = () => {
   return (
     <Layout>
       <div className="flex flex-col items-center justify-center space-y-6 mt-20">
-        <div className="flex flex-row m-2 justify-center">
+        <div className="flex flex-col lg:flex-row m-2 justify-center my-5">
           <img
             src={`/api/v1/product/product-image/${product._id}`}
-            className="w-1/3"
+            className="w-full lg:w-1/3"
             alt={product.name}
           />
-          <div className="flex flex-col w-1/3 pl-10">
+          <div className="flex flex-col w-full lg:w-1/3 p-2 lg:pl-10">
             <h5 className="text-xl font-semibold text-center">
               PRODUCT DETAILS
             </h5>
             <p className="text-xl"> NAME: {product.name}</p>
-            <p className="text-xl text-gray-500 text-justify">
+            <p className="text-gray-500 text-justify">
               DESCRIPTION: {product.description}
             </p>
             <p className="text-xl">CATEGORY: {product?.category?.name}</p>

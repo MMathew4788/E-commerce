@@ -22,16 +22,16 @@ const Orders = () => {
   }, [auth?.token]);
   return (
     <Layout>
-      <h1 className="flex flex-row items-top justify-left space-y-6 mt-20">
-        <div className="flex w-1/4">
+      <h1 className="flex flex-col lg:flex-row items-top justify-left space-y-6 mt-20">
+        <div className="flex w-full lg:w-1/4 item-center justify-center lg:justify-start border lg:border-0">
           <UserMenu />
         </div>
-        <div className="flex w-3/4">
-          <div>
-            <h1 className="text-xl text-center w-full">Orders</h1>
+        <div className="flex lg:w-3/4 px-2">
+          <div className="overflow-hidden">
+            <h1 className="text-xl text-center w-full font-bold">Orders</h1>
             {orders?.map((o, i) => {
               return (
-                <div className="border shadow my-2">
+                <div className="border shadow my-2 overflow-y-scroll">
                   <table className="m-2">
                     <thead>
                       <tr className="border">

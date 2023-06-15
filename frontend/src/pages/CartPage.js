@@ -78,11 +78,11 @@ const CartPage = () => {
 
   return (
     <Layout>
-      <h1 className="flex flex-col items-center justify-center space-y-6 my-28">
-        <div className="text-xl">{`Welcome ${
+      <h1 className="flex flex-col items-center justify-center space-y-6 my-28 mx-4">
+        <div className="flex text-xl text-center">{`Welcome ${
           auth?.token && auth?.user?.name
         }`}</div>
-        <div>
+        <div className="flex text-center">
           {" "}
           {cart?.length
             ? `You Have ${cart.length} items in your cart ${
@@ -90,19 +90,19 @@ const CartPage = () => {
               }`
             : "Your Cart Is Empty"}
         </div>
-        <div className="flex flex-row space-x-10">
+        <div className="flex flex-col lg:flex-row lg:space-x-10">
           <div className="flex flex-col">
             {cart?.map((p) => (
-              <div className="flex flex-col shadow-xl p-4">
-                <div className="text-center">{p.name}</div>
+              <div className="flex flex-col items-center shadow-xl p-4">
+                <div className="font-bold text-center">{p.name}</div>
                 <img
                   src={`/api/v1/product/product-image/${p._id}`}
-                  className="w-[10rem] m-2"
+                  className="w-60 m-2"
                   alt={p.name}
                 />
                 <p className="text-center">Price: £{p.price}</p>
                 <button
-                  className="px-4 py-2 text-gray-200 hover:text-black bg-red-500 border rounded-xl text-sm flex items-center justify-center font-semibold"
+                  className="w-60 px-4 py-2 text-gray-200 hover:text-black bg-red-500 border rounded-xl text-sm flex items-center justify-center font-semibold"
                   onClick={() => removeCartItem(p._id)}
                 >
                   Remove
@@ -112,7 +112,7 @@ const CartPage = () => {
           </div>
           <div className="flex flex-col shadow-xl p-4 mb-20">
             <div className="mb-2 text-center font-semibold">Cart Summary</div>
-            <div> Total Price: {totalPrice()}</div>
+            <div className="text-center"> Total Price: {totalPrice()}</div>
             {auth?.user?.address ? (
               <>
                 <div className="my-4">

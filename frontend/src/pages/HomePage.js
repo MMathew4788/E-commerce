@@ -126,11 +126,17 @@ const HomePage = () => {
               {products?.map((image) => (
                 <div className="shadow-xl flex p-4 items-top justify-center">
                   <div className="flex flex-col m-2" style={{ width: "18rem" }}>
-                    <img
-                      src={`/api/v1/product/product-image/${image._id}`}
-                      className="h-[15rem]"
-                      alt={image.name}
-                    />
+                    <div
+                      className={`w-full overflow-hidden h-${Math.floor(
+                        (15 * image.height) / image.width
+                      )}rem`}
+                    >
+                      <img
+                        src={`/api/v1/product/product-image/${image._id}`}
+                        className={` hover:scale-110 duration-1000 w-full`}
+                        alt={image.name}
+                      />
+                    </div>
                     <div className="flex flex-col">
                       <h5 className="bg-cyan-300 text-gray-800 font-semibold p-2 text-center">
                         {image.name}

@@ -58,15 +58,15 @@ const Profile = () => {
 
   return (
     <Layout>
-      <h1 className="flex flex-row items-top justif•y-left space-y-6 mt-20">
-        <div className="flex w-1/4">
+      <h1 className="flex flex-col lg:flex-row items-top justif•y-left space-y-6 my-24">
+        <div className="flex w-full lg:w-1/4 item-center justify-center lg:justify-start border lg:border-0">
           <UserMenu />
         </div>
-        <div className="flex flex-col items-center justify-center space-y-6 mt-20 mb-20">
-          <div className="text-3xl font-bold">User Profile</div>
+        <div className="flex flex-col items-center justify-center space-y-6 my-20">
+          <div className="text-xl font-bold">User Profile</div>
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col space-y-4 w-80 overflow-y-scroll"
+            className="flex flex-col space-y-4 w-64 lg:w-80 overflow-y-scroll pb-16"
           >
             <div className="flex flex-col space-y-2 ">
               <label>Name</label>
