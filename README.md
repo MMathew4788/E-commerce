@@ -66,3 +66,8 @@ To run the app, navigate to the root directory and run the following command:
 
 `npm run dev`<br>
 This will start the development server for the backend code and the frontend code. The app will open in your default browser.
+
+## Try it Live
+
+This WebApp is deployed in cyclic.<br>
+To view the demo:<a href="https://breakable-wasp-panama-hat.cyclic.app" target="_blank"> click here</a>

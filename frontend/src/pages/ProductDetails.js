@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import Layout from "./../components/Layouts/Layout";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import { useCart } from "../components/Context/Cart";
 
 const ProductDetails = () => {
   const params = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
+  const [cart, setCart] = useCart();
 
   //inital product details
   useEffect(() => {
@@ -56,7 +58,16 @@ const ProductDetails = () => {
             </p>
             <p className="text-xl">CATEGORY: {product?.category?.name}</p>
             <p className="text-xl"> PRICE: {product.price}</p>
-            <button className="bg-gray-800 text-cyan-300 text-center p-2">
+            <button
+              className="bg-gray-800 text-cyan-300 text-center p-2"
+              onClick={() => {
+                setCart([...cart, product]);
+                localStorage.setItem(
+                  "cart",
+                  JSON.stringify([...cart, product])
+                );
+              }}
+            >
               Add to Cart
             </button>
           </div>
@@ -65,25 +76,34 @@ const ProductDetails = () => {
           <p className="text-center text-xl font-semibold">SIMILAR PRODUCTS</p>
           {relatedProducts.length < 1 && <p>No similar products found</p>}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-            {relatedProducts?.map((p) => (
+            {relatedProducts?.map((product) => (
               <div className="shadow-xl flex items-top justify-center">
                 <div className="flex flex-col m-2" style={{ width: "18rem" }}>
                   <img
-                    src={`/api/v1/product/product-image/${p._id}`}
+                    src={`/api/v1/product/product-image/${product._id}`}
                     className="w-[18rem]"
-                    alt={p.name}
+                    alt={product.name}
                   />
                   <div className="flex flex-col">
                     <h5 className="bg-cyan-300 text-gray-800 font-semibold p-2 text-center">
-                      {p.name}
+                      {product.name}
                     </h5>
                     <button
                       className="text-gray-800 border border-cyan-300 p-2 mb-2 text-center"
-                      onClick={() => navigate(`/product/${p.slug}`)}
+                      onClick={() => navigate(`/product/${product.slug}`)}
                     >
                       More Details
                     </button>
-                    <button className="bg-gray-800 text-cyan-300 text-center p-2">
+                    <button
+                      className="bg-gray-800 text-cyan-300 text-center p-2"
+                      onClick={() => {
+                        setCart([...cart, product]);
+                        localStorage.setItem(
+                          "cart",
+                          JSON.stringify([...cart, product])
+                        );
+                      }}
+                    >
                       Add to Cart
                     </button>
                   </div>
