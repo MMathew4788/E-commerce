@@ -69,5 +69,5 @@ This will start the development server for the backend code and the frontend cod
 
 ## Try it Live
 
-This WebApp is deployed in cyclic.<br>
-To view the demo:<a href="https://breakable-wasp-panama-hat.cyclic.app" target="_blank"> click here</a>
+This WebApp is deployed in render.<br>
+To view the demo:<a href="https://e-commerce-xu0m.onrender.com/" target="_blank"> click here</a>

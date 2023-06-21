@@ -123,44 +123,46 @@ const HomePage = () => {
           </div>
           <div className="flex flex-col lg:w-4/5 mb-20">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-              {products?.map((image) => (
+              {products?.map((product) => (
                 <div className="shadow-xl flex p-4 items-top justify-center">
                   <div className="flex flex-col m-2" style={{ width: "18rem" }}>
                     <div
                       className={`w-full overflow-hidden h-${Math.floor(
-                        (15 * image.height) / image.width
+                        (15 * product.height) / product.width
                       )}rem`}
                     >
                       <img
-                        src={`/api/v1/product/product-image/${image._id}`}
+                        src={`/api/v1/product/product-image/${product._id}`}
                         className={` hover:scale-110 duration-1000 w-full`}
-                        alt={image.name}
+                        alt={product.name}
                       />
                     </div>
                     <div className="flex flex-col">
                       <h5 className="bg-cyan-300 text-gray-800 font-semibold p-2 text-center">
-                        {image.name}
+                        {product.name}
                       </h5>
                       <p className="text-gray-500">
-                        {image.description.substring(
+                        {product.description.substring(
                           0,
-                          image.description.indexOf(".") + 1
+                          product.description.indexOf(".") + 1
                         )}
                       </p>
-                      <p className="text-gray-800 font-bold">£ {image.price}</p>
+                      <p className="text-gray-800 font-bold">
+                        £ {product.price}
+                      </p>
                       <button
                         className="text-gray-800 border border-cyan-300 p-2 mb-2 text-center"
-                        onClick={() => navigate(`/product/${image.slug}`)}
+                        onClick={() => navigate(`/product/${product.slug}`)}
                       >
                         More Details
                       </button>
                       <button
                         className="bg-gray-800 text-cyan-300 text-center p-2"
                         onClick={() => {
-                          setCart([...cart, image]);
+                          setCart([...cart, product]);
                           localStorage.setItem(
                             "cart",
-                            JSON.stringify([...cart, image])
+                            JSON.stringify([...cart, product])
                           );
                         }}
                       >
