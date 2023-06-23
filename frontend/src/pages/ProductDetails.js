@@ -45,19 +45,17 @@ const ProductDetails = () => {
         <div className="flex flex-col lg:flex-row m-2 justify-center my-5">
           <img
             src={`/api/v1/product/product-image/${product._id}`}
-            className="w-full lg:w-1/3"
+            className="w-full lg:w-1/3 hover:scale-105 duration-700"
             alt={product.name}
           />
           <div className="flex flex-col w-full lg:w-1/3 p-2 lg:pl-10">
-            <h5 className="text-xl font-semibold text-center">
-              PRODUCT DETAILS
-            </h5>
-            <p className="text-xl"> NAME: {product.name}</p>
-            <p className="text-gray-500 text-justify">
-              DESCRIPTION: {product.description}
-            </p>
-            <p className="text-xl">CATEGORY: {product?.category?.name}</p>
-            <p className="text-xl"> PRICE: {product.price}</p>
+            <p className="text-xl font-bold">{product.name}</p>
+            <p className="text-gray-500 text-justify">{product.description}</p>
+            <p className="text-lg line-through"> £ {product.price * 1.2}</p>
+            <p className="text-2xl font-bold -mt-6"> £ {product.price}</p>
+            <div className="text-green-700 font-semibold -mt-6 mb-6">
+              inclusive of all taxes
+            </div>
             <button
               className="bg-gray-800 text-cyan-300 text-center p-2"
               onClick={() => {
