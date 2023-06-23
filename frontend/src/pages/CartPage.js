@@ -76,6 +76,37 @@ const CartPage = () => {
     }
   };
 
+  // Creating unique cart item
+
+  function getUniqueItems() {
+    // Assuming the 'cart' variable is defined and contains the cart items
+    const uniqueItems = [];
+
+    for (const item of cart) {
+      // Check if the item already exists in the 'uniqueItems' array based on its ID
+      const existingItem = uniqueItems.find(
+        (uniqueItem) => uniqueItem._id === item._id
+      );
+      if (!existingItem) {
+        // If the item doesn't exist, add it to the 'uniqueItems' array
+        uniqueItems.push(item);
+      }
+    }
+    return uniqueItems;
+  }
+
+  function getItemQuantity(itemId) {
+    // Assuming the 'cart' variable is defined and contains the cart items
+    let quantity = 0;
+    for (const item of cart) {
+      if (item._id === itemId) {
+        // If the item ID matches, increment the quantity
+        quantity++;
+      }
+    }
+    return quantity;
+  }
+
   return (
     <Layout>
       <h1 className="flex flex-col items-center justify-center space-y-6 my-28 mx-4">
@@ -92,24 +123,31 @@ const CartPage = () => {
         </div>
         <div className="flex flex-col lg:flex-row lg:space-x-10">
           <div className="flex flex-col">
-            {cart?.map((p) => (
-              <div className="flex flex-col items-center shadow-xl p-4">
-                <div className="font-bold text-center">{p.name}</div>
+            {getUniqueItems().map((item) => (
+              <div
+                key={item._id}
+                className="flex flex-col items-center shadow-xl p-4"
+              >
+                <div className="font-bold text-center">{item.name}</div>
                 <img
-                  src={`/api/v1/product/product-image/${p._id}`}
+                  src={`/api/v1/product/product-image/${item._id}`}
                   className="w-60 m-2"
-                  alt={p.name}
+                  alt={item.name}
                 />
-                <p className="text-center">Price: £{p.price}</p>
+                <p className="text-center">Price: £{item.price}</p>
+                <p className="text-center">
+                  Quantity: {getItemQuantity(item._id)}
+                </p>
                 <button
                   className="w-60 px-4 py-2 text-gray-200 hover:text-black bg-red-500 border rounded-xl text-sm flex items-center justify-center font-semibold"
-                  onClick={() => removeCartItem(p._id)}
+                  onClick={() => removeCartItem(item._id)}
                 >
                   Remove
                 </button>
               </div>
             ))}
           </div>
+
           <div className="flex flex-col shadow-xl p-4 mb-20">
             <div className="mb-2 text-center font-semibold">Cart Summary</div>
             <div className="text-center"> Total Price: {totalPrice()}</div>
